@@ -52,7 +52,7 @@ class TypeScriptCodeGenerator {
 
         var fullPath;
         var codeWriter;
-        var isAnnotationType = (elem.stereotype !== undefined && elem.stereotype === "annotationType");
+        var isAnnotationType = (elem.stereotype !== undefined && elem && elem.stereotype === "annotationType");
 
         console.log('generate', 'elem', elem);
 
@@ -577,7 +577,7 @@ class TypeScriptCodeGenerator {
             }
 
             // body
-            if (skipBody === true || _modifiers.includes("abstract")) {
+            if (skipBody === true || _modifiers && _modifiers.includes("abstract")) {
                 codeWriter.writeLine(terms.join(" ") + ";");
             } else {
                 codeWriter.writeLine(terms.join(" ") + " {");
